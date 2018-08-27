@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ ! -f output.out ]; then
+    touch output.out
+else
+    > output.out
+fi
+
+if [ ! -f result.out ]; then
+    touch result.out
+    echo "Count | ID" > result.out
+else
+    echo "Count | ID" > result.out
+fi
+
+for i in $( grep "sp-pub-" test.out ); do
+    if [ $(grep -c $i output.out) = 0 ]; then
+        COUNTER=$(grep -c $i test.out)
+        echo "$COUNTER | $i" >> output.out
+    fi
+done
+
+sort output.out -nr >> result.out
+
+rm output.out
