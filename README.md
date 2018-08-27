@@ -1,5 +1,6 @@
 # Instructions
 - fork/clone this repo
+- see below for individual instructions for the separate programs
 
 
 ### Notes
